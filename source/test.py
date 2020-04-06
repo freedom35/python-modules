@@ -37,9 +37,23 @@ def test_smtp_mime():
     email.fromName = 'Test Sender'
     email.fromAddress = '...@gmailcom'
 
-    email.emailSubject = 'Test Mime'
-    #email.emailContentPlaintext = '...'
-    #email.emailContentHtml = '...'
+    email.emailSubject = 'Test MIME'
+    email.emailContentPlaintext = 'Test message (plaintext).'
+    email.emailContentHtml = """\
+        <html>
+        <head></head>
+        <body>
+            <p>Test message (HTML).</p>
+        </body>
+        </html>
+        """
+    
+    # Attachment note:
+    # Specify full path if file to attach is not in local dir.
+    # Use os.path.join for platform (Windows/UNIX) independence (import os)
+    # i.e. if file is in resources sub-dir:
+    # attachmentPath = os.path.join('resources', 'readme.md')
+
     #email.attachmentFilename = 'readme.md'
 
     toName = 'Test Recipient'

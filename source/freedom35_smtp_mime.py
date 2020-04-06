@@ -29,7 +29,7 @@ class FreedomEmail:
     fromAddress = ''
     bccAddress = None
     attachmentFilename = None
-    emailSubject = 'Example'
+    emailSubject = ''
     emailContentPlaintext = 'Plaintext message content.'
     emailContentHtml = """\
         <html>
