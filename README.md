@@ -1,6 +1,6 @@
 # Python Modules
 General purpose Python modules.<br>
-These modules are intended for example/demo purposes, but can also be used in projects.
+These modules are intended for example/demo purposes, but can also be used as-is within projects.
 
 Note: Modules tested using **Python 3.7**.
 
