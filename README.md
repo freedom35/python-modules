@@ -7,7 +7,7 @@ Note: Modules written using **Python 3**.
 ## Usage
 For example usage of modules, refer to the source code in **test.py**.
 
-To run test.py, use command line:<br>
+To run **test.py**, use command line:<br>
 ```sh
 $ python3 test.py
 ```
