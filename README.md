@@ -9,6 +9,7 @@ Note: Modules written using **Python 3**.
 ## SMTP Modules
 The **smtp** directory contains modules related to sending emails via SMTP.
 <br>
+<br>
 **Note: For the example test modules, you will need to change the values for SMTP server login etc.**
 
 ### Plaintext
