@@ -51,6 +51,9 @@ class FreedomTestDatabase:
         cur.execute(sqlCreateTableCustomers)
         cur.execute(sqlCreateTableAppointments)
 
+        # Save (commit) the changes
+        self.conn.commit()
+
 
     #######################################
     # Closes database connection
@@ -64,7 +67,7 @@ class FreedomTestDatabase:
     # Insert single record into database
     #######################################
     def insert_customer(self, name, email):
-        # Check database is open
+        # Check connection initialized
         if self.conn is None:
             return -1
 
@@ -77,14 +80,10 @@ class FreedomTestDatabase:
         # Insert a record
         cur.execute("INSERT INTO customers (name,email) VALUES (?,?)", insertData)
 
-        # Get auto-generated id from insert
-        #testid = cur.lastrowid
-
         # Save (commit) the changes
         self.conn.commit()
 
-        # Return primary key
-        #return testid
+        # Return auto-generated id from insert (primary key)
         return cur.lastrowid
 
 
@@ -92,9 +91,9 @@ class FreedomTestDatabase:
     # Insert multiple records into database
     #######################################
     def insert_appointments(self, customer_id, appointments):
-        # Check database is open
+        # Check connection initialized
         if self.conn is None:
-            return -1
+            return
         
         # Get database cursor
         cur = self.conn.cursor()
@@ -123,7 +122,7 @@ class FreedomTestDatabase:
     # Update database
     #######################################
     def update_customer_email(self, customer_id, newEmail):
-        # Check database is open
+        # Check connection initialized
         if self.conn is None:
             return
 
@@ -144,7 +143,7 @@ class FreedomTestDatabase:
     # Select from database
     #######################################
     def select_appointments(self, customer_id):
-        # Check database is open
+        # Check connection initialized
         if self.conn is None:
             return []
 
@@ -176,7 +175,7 @@ class FreedomTestDatabase:
     # Delete from database
     #######################################
     def delete_customer(self, customer_id):
-        # Check database is open
+        # Check connection initialized
         if self.conn is None:
             return
 
