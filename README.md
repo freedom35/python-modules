@@ -8,8 +8,7 @@ Note: Modules written using **Python 3**.
 The **smtp** directory contains modules related to sending emails via SMTP.
 <br>
 <br>
-***Note: For the example test modules, you will need to change the values for SMTP server login etc.***
-<br>
+**Note: For the example test modules, you will need to change the values for SMTP server login etc.**
 
 ### Plaintext
 Module **freedom35_smtp_plaintext.py** contains a method to demonstrate sending plaintext emails.
@@ -20,8 +19,6 @@ To run **test_smtp_plaintext.py**, use command line:<br>
 ```sh
 $ python3 test_smtp_plaintext.py
 ```
-<br>
-
 ### MIME (Multipurpose Internet Mail Extensions)
 Module **freedom35_smtp_mime.py** contains a class to handle sending MIME emails.
 <br>
@@ -31,7 +28,6 @@ To run **test_smtp_mime.py**, use command line:<br>
 ```sh
 $ python3 test_smtp_mime.py
 ```
-<br>
   
 ## Database Module
 The **database** directory contains modules related to SQLite v3 database operations.
