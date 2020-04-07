@@ -3,12 +3,9 @@
 #
 # Example usage: see individual methods
 #######################################
-
-# Required for MIME
 from freedom35_smtp_mime import FreedomEmail
-
-# Required for plaintext
 from freedom35_smtp_plaintext import send_plaintext_message
+from freedom35_database import FreedomTestDatabase
 
 
 #######################################
@@ -16,9 +13,10 @@ from freedom35_smtp_plaintext import send_plaintext_message
 #######################################
 def main():
     try:
-        print('*** Update test values before running ***')
+        print('*** For email tests, uupdate test values before running ***')
         #test_smtp_mime()
         #test_smtp_plaintext()
+        test_database()
 
     except Exception as e:
         print('Error: {e}'.format(e=str(e)))
@@ -80,6 +78,40 @@ def test_smtp_plaintext():
     message = 'This is a test message.'
 
     send_plaintext_message(toName, toAddress, fromName, fromAddress, subject, message, smtpUser, smtpPwd)
+
+
+#######################################
+# freedom35_database
+#######################################
+def test_database():
+    
+    db = FreedomTestDatabase()
+
+    # Use an in-memory database for repeat testing
+    # Alternate option: create a database file in the local directory sych as 'test.db'
+    db.open(':memory:')
+
+    # Test data
+    results = [ 'Apple', 'Orange', 'Pear' ]
+
+    # Insert into database
+    testid = db.insert_test_results('Condor', results)
+
+    # Change test name
+    db.update_test_name(testid, 'Eagle')
+
+    # Fetch results from database
+    selectedResults = db.select_test_results(testid)
+
+    # Output results to console
+    for r in selectedResults:
+        print('Database result: {}'.format(r))
+
+    # Delete test results
+    db.delete_test(testid)
+
+    # Finished
+    db.close()
 
 
 #######################################

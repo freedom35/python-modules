@@ -1,6 +1,6 @@
 # Python Modules
 Repository for general purpose Python modules.<br>
-These modules are intended for example purposes, but can also be used as-is within projects.
+These modules are intended for example purposes, but can also be used as-is or as a basis for use within other projects.
 
 Note: Modules written using **Python 3**.
 
