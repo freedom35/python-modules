@@ -1,5 +1,9 @@
 #######################################
-# GitHub: Alan Barr (freedom35) 2020
+# Example of database operations using
+# a SQLite v3 database.
+#
+# Alan Barr (GitHub: freedom35)
+# April 2020
 #######################################
 import sqlite3
 import time
@@ -106,6 +110,9 @@ class FreedomTestDatabase:
     # Update results from database
     #######################################
     def update_test_name(self, testid, newResultsName):
+        # Check database is open
+        if self.conn is None:
+            return
 
         # Get database cursor
         cur = self.conn.cursor()
@@ -124,6 +131,9 @@ class FreedomTestDatabase:
     # Select results from database
     #######################################
     def select_test_results(self, testid):
+        # Check database is open
+        if self.conn is None:
+            return []
 
         # Get database cursor
         cur = self.conn.cursor()
@@ -152,6 +162,9 @@ class FreedomTestDatabase:
     # Delete results from database
     #######################################
     def delete_test(self, testid):
+        # Check database is open
+        if self.conn is None:
+            return
 
         # Get database cursor
         cur = self.conn.cursor()

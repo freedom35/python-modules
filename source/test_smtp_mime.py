@@ -1,7 +1,9 @@
 #######################################
-# GitHub: Alan Barr (freedom35) 2020
+# Example usage for module:
+# freedom35_smtp_mime.py
 #
-# Test/Example Usage
+# Alan Barr (GitHub: freedom35)
+# April 2020
 #######################################
 from freedom35_smtp_mime import FreedomEmail
 
@@ -11,11 +13,14 @@ from freedom35_smtp_mime import FreedomEmail
 #######################################
 def main():
     try:
-        email = FreedomEmail()
+        toName = 'Test Recipient'
+        toAddress = '...@gmail.com'         # Update!
 
+        email = FreedomEmail()
+        
         email.smtpUser = 'user1'            # Update!
         email.smtpPwd = 'password1'         # Update!
-        
+
         email.fromName = 'Test Sender'
         email.fromAddress = '...@gmailcom'  # Update!
 
@@ -37,9 +42,6 @@ def main():
         # attachmentPath = os.path.join('resources', 'readme.md')
 
         #email.attachmentFilename = 'readme.md'
-
-        toName = 'Test Recipient'
-        toAddress = '...@gmail.com'         # Update!
         
         email.send_mime_message(toName, toAddress)
         

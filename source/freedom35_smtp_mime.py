@@ -1,6 +1,11 @@
-#######################################
-# GitHub: Alan Barr (freedom35) 2020
-#######################################
+#########################################
+# Module for sending a MIME
+# (Multipurpose Internet Mail Extensions)
+# email via SMTP.
+#
+# Alan Barr (GitHub: freedom35)
+# April 2020
+#########################################
 
 # Required for sending message
 import smtplib
@@ -56,7 +61,6 @@ class FreedomEmail:
         if not self.bccAddress is None:
             msg['Bcc'] = self.bccAddress
 
-        # Attach each part
         # MIME Structure:
         # mixed
         # alternative
@@ -87,7 +91,7 @@ class FreedomEmail:
             # Add attachment object to message
             msg.attach(sub)
         
-        # Example using gmail servers to send email 
+        # Send using secure SMTP
         with smtplib.SMTP_SSL(self.smtpServer, self.smtpPort) as server:
             # For security, login using an app generated password (not account password)
             server.login(self.smtpUser, self.smtpPwd)

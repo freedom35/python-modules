@@ -1,7 +1,9 @@
 #######################################
-# GitHub: Alan Barr (freedom35) 2020
+# Example usage for module:
+# freedom35_smtp_plaintext.py
 #
-# Test/Example Usage
+# Alan Barr (GitHub: freedom35)
+# April 2020
 #######################################
 from freedom35_smtp_plaintext import send_plaintext_message
 
@@ -11,17 +13,17 @@ from freedom35_smtp_plaintext import send_plaintext_message
 #######################################
 def main():
     try:
-        smtpUser = 'user1'              # Update!
-        smtpPwd = 'password1'           # Update!
+        toName = 'Test Recipient'
+        toAddress = '...@gmail.com'     # Update!
 
         fromName = 'Test Sender'
         fromAddress = '...@gmail.com'   # Update!
 
-        toName = 'Test Recipient'
-        toAddress = '...@gmail.com'     # Update!
-
         subject = 'Test Plaintext'
         message = 'This is a test message.'
+
+        smtpUser = 'user1'              # Update!
+        smtpPwd = 'password1'           # Update!
 
         send_plaintext_message(toName, toAddress, fromName, fromAddress, subject, message, smtpUser, smtpPwd)
 

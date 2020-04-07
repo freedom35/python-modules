@@ -1,5 +1,9 @@
 #######################################
-# GitHub: Alan Barr (freedom35) 2020
+# Module for sending plaintext email
+# via SMTP.
+#
+# Alan Barr (GitHub: freedom35)
+# April 2020
 #######################################
 import smtplib
 
@@ -22,7 +26,7 @@ def send_plaintext_message(toName, toAddress, fromName, fromAddress, subject, co
     # Set content to plaintext
     msg.set_content(contentAsString)
 
-    # Example using gmail servers to send email 
+    # Send using secure SMTP
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
         # For security, login using an app generated password (not account password)
         server.login(smtpUser, smtpPwd)

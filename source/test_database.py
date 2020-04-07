@@ -1,7 +1,9 @@
 #######################################
-# GitHub: Alan Barr (freedom35) 2020
+# Example usage for module:
+# freedom35_database.py
 #
-# Test/Example Usage
+# Alan Barr (GitHub: freedom35)
+# April 2020
 #######################################
 from freedom35_database import FreedomTestDatabase
 
