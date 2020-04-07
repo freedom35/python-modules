@@ -20,7 +20,7 @@ To run **test_smtp_plaintext.py**, use command line:
 ```sh
 $ python3 test_smtp_plaintext.py
 ```
-<br />
+  
   
 ### MIME (Multipurpose Internet Mail Extensions)
 Module **freedom35_smtp_mime.py** contains a class to handle sending MIME emails.  
