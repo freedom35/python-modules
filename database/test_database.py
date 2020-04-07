@@ -19,24 +19,30 @@ def main():
         # Alternate option: create a database file in the local directory sych as 'test.db'
         db.open(':memory:')
 
-        # Test data
-        results = [ 'Apple', 'Orange', 'Pear' ]
-
         # Insert into database
-        testid = db.insert_test_results('Condor', results)
+        customer_id = db.insert_customer('Condor', 'condor1@test.com')
 
-        # Change test name
-        db.update_test_name(testid, 'Eagle')
+        # Test data
+        appointments = []
+        appointments.append({ 'Date': '2020-09-01', 'Type': 'Checkup' })
+        appointments.append({ 'Date': '2020-10-07', 'Type': 'Filling' })
+        appointments.append({ 'Date': '2020-10-31', 'Type': 'Crown' })
+
+        # Insert multiple
+        db.insert_appointments(customer_id, appointments)
+        
+        # Change email
+        db.update_customer_email(customer_id, 'condor2@test.com')
 
         # Fetch results from database
-        selectedResults = db.select_test_results(testid)
+        selectedAppointments = db.select_appointments(customer_id)
 
         # Output results to console
-        for r in selectedResults:
-            print('Result for {}: {}'.format(r[0], r[1]))
+        for appt in selectedAppointments:
+            print('Appointment Info: {}'.format(appt))
 
         # Delete test results
-        db.delete_test(testid)
+        db.delete_customer(customer_id)
 
         # Finished
         db.close()

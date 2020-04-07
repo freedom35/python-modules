@@ -6,9 +6,6 @@
 # April 2020
 #######################################
 import sqlite3
-import time
-
-from datetime import datetime
 
 #######################################
 # Class to test database methods
@@ -27,19 +24,20 @@ class FreedomTestDatabase:
     def open(self, databaseName):
         
         # Define test tables
-        sqlCreateTableTests = """\
-            CREATE TABLE IF NOT EXISTS tests (
-                test_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-                timestamp TEXT NOT NULL,
-                name TEXT NOT NULL
+        sqlCreateTableCustomers = """\
+            CREATE TABLE IF NOT EXISTS customers (
+                customer_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+                name TEXT NOT NULL,
+                email TEXT NOT NULL
             )
             """
 
-        sqlCreateTableResults = """\
-            CREATE TABLE IF NOT EXISTS results (
-                result_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-                test_id	INTEGER NOT NULL,
-                result TEXT NOT NULL
+        sqlCreateTableAppointments = """\
+            CREATE TABLE IF NOT EXISTS appointments (
+                appointment_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+                customer_id	INTEGER NOT NULL,
+                appointment_date TEXT NOT NULL,
+                type TEXT NOT NULL
             )
             """
 
@@ -50,8 +48,8 @@ class FreedomTestDatabase:
         cur = self.conn.cursor()
 
         # Create tables (if they don't exist)
-        cur.execute(sqlCreateTableTests)
-        cur.execute(sqlCreateTableResults)
+        cur.execute(sqlCreateTableCustomers)
+        cur.execute(sqlCreateTableAppointments)
 
 
     #######################################
@@ -63,53 +61,68 @@ class FreedomTestDatabase:
 
 
     #######################################
-    # Insert results into database
+    # Insert single record into database
     #######################################
-    def insert_test_results(self, resultsName, results):
+    def insert_customer(self, name, email):
         # Check database is open
         if self.conn is None:
             return -1
-
-        # Get submission time
-        now = datetime.now()
-        nowstr = now.strftime('%Y-%m-%d')
 
         # Get database cursor
         cur = self.conn.cursor()
 
         # Create tuple for insert
-        insertData = (nowstr, resultsName)
+        insertData = (name, email)
 
         # Insert a record
-        cur.execute("INSERT INTO tests (timestamp,name) VALUES (?,?)", insertData)
+        cur.execute("INSERT INTO customers (name,email) VALUES (?,?)", insertData)
 
         # Get auto-generated id from insert
-        testid = cur.lastrowid
-
-        # Create tuple list for multiple insert
-        resultdata = []
-
-        for r in results:
-            # Create tuple for entry
-            row = (testid, r)
-
-            # Add tuple to list
-            resultdata.append(row)
-
-        # Insert all results
-        cur.executemany('INSERT INTO results (test_id,result) VALUES (?,?)', resultdata)
+        #testid = cur.lastrowid
 
         # Save (commit) the changes
         self.conn.commit()
 
         # Return primary key
-        return testid
+        #return testid
+        return cur.lastrowid
 
 
     #######################################
-    # Update results from database
+    # Insert multiple records into database
     #######################################
-    def update_test_name(self, testid, newResultsName):
+    def insert_appointments(self, customer_id, appointments):
+        # Check database is open
+        if self.conn is None:
+            return -1
+        
+        # Get database cursor
+        cur = self.conn.cursor()
+        
+        # Create tuple list for multiple insert
+        insertData = []
+
+        for appt in appointments:
+            # Create tuple for entry
+            row = (customer_id, 
+                appt['Date'],
+                appt['Type']
+                )
+
+            # Add tuple to list
+            insertData.append(row)
+
+        # Insert all results
+        cur.executemany('INSERT INTO appointments (customer_id,appointment_date,type) VALUES (?,?,?)', insertData)
+
+        # Save (commit) the changes
+        self.conn.commit()
+
+
+    #######################################
+    # Update database
+    #######################################
+    def update_customer_email(self, customer_id, newEmail):
         # Check database is open
         if self.conn is None:
             return
@@ -118,19 +131,19 @@ class FreedomTestDatabase:
         cur = self.conn.cursor()
 
         # Create tuple for update
-        updateData = (testid, newResultsName)
+        updateData = (newEmail, customer_id)
 
         # Update table
-        cur.execute("UPDATE tests SET name = ? WHERE test_id = ?", updateData) 
+        cur.execute("UPDATE customers SET email = ? WHERE customer_id = ?", updateData) 
 
         # Save (commit) the changes
         self.conn.commit()
 
 
     #######################################
-    # Select results from database
+    # Select from database
     #######################################
-    def select_test_results(self, testid):
+    def select_appointments(self, customer_id):
         # Check database is open
         if self.conn is None:
             return []
@@ -139,13 +152,14 @@ class FreedomTestDatabase:
         cur = self.conn.cursor()
 
         # Create tuple for select data
-        selectData = (testid,)
+        # (Empty value in order to create as tuple, otherwise just a single value)
+        selectData = (customer_id,)
 
         # Define select statment
-        sqlSelect = """SELECT t.name, r.result FROM RESULTS r
-            INNER JOIN tests t on t.test_id = r.test_id
-            WHERE r.test_id = ? 
-            ORDER BY r.result_id
+        sqlSelect = """SELECT c.name,c.email,a.appointment_date as date,a.type FROM appointments a
+            INNER JOIN customers c on c.customer_id = a.customer_id
+            WHERE a.customer_id = ? 
+            ORDER BY a.appointment_date
             """
 
         # Execute SQL statment
@@ -159,9 +173,9 @@ class FreedomTestDatabase:
 
 
     #######################################
-    # Delete results from database
+    # Delete from database
     #######################################
-    def delete_test(self, testid):
+    def delete_customer(self, customer_id):
         # Check database is open
         if self.conn is None:
             return
@@ -170,11 +184,11 @@ class FreedomTestDatabase:
         cur = self.conn.cursor()
 
         # Create tuple for update
-        deleteData = (testid,)
+        deleteData = (customer_id,)
 
-        # Update table
-        cur.execute("DELETE FROM results WHERE test_id = ?", deleteData)
-        cur.execute("DELETE FROM tests WHERE test_id = ?", deleteData)
+        # Delete related and primary data
+        cur.execute("DELETE FROM appointments WHERE customer_id = ?", deleteData)
+        cur.execute("DELETE FROM customers WHERE customer_id = ?", deleteData)
 
         # Save (commit) the changes
         self.conn.commit()
