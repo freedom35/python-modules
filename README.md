@@ -5,7 +5,7 @@ These modules are intended for example purposes, but can also be used as-is or a
 Note: Modules written using **Python 3**.
 
 ## Module Usage
-For example usage of modules, refer to the source code in corresponding **test_<module>.py**.
+For example usage of modules, refer to the source code in corresponding **test_\<module>.py**.
 
 i.e. For **freedom35_smtp_mime.py** view **test_smtp_mime.py**.
 
