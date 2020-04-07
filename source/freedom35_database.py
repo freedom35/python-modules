@@ -131,14 +131,21 @@ class FreedomTestDatabase:
         # Create tuple for select data
         selectData = (testid,)
 
+        # Define select statment
+        sqlSelect = """SELECT t.name, r.result FROM RESULTS r
+            INNER JOIN tests t on t.test_id = r.test_id
+            WHERE r.test_id = ? 
+            ORDER BY r.result_id
+            """
+
         # Execute SQL statment
-        cur.execute("SELECT result from RESULTS WHERE test_id = ? ORDER BY result_id", selectData)
+        cur.execute(sqlSelect, selectData)
 
         # Get results into a list
         selectedResults = cur.fetchall()
 
-        # Return list of first items in each tuple
-        return map(lambda r: r[0], selectedResults)
+        # Return list
+        return selectedResults
 
 
     #######################################

@@ -4,12 +4,15 @@ These modules are intended for example purposes, but can also be used as-is or a
 
 Note: Modules written using **Python 3**.
 
-## Usage
-For example usage of modules, refer to the source code in **test.py**.
+## Module Usage
+For example usage of modules, refer to the source code in corresponding **test_<module>.py**.
 
-To run **test.py**, use command line:<br>
+i.e. For **freedom35_smtp_mime.py** view **test_smtp_mime.py**.
+
+To run **test_smtp_mime.py**, use command line:<br>
 ```sh
-$ python3 test.py
+$ python3 test_smtp_mime.py
 ```
 
-Note: You will need to change the example values for SMTP etc.
+Note: You will need to change the example values for SMTP login etc.
+
