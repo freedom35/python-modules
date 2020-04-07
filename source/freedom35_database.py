@@ -15,7 +15,6 @@ class FreedomTestDatabase:
     # Members
     #######################################
     conn = None
-    databaseName = ''
 
 
     #######################################
