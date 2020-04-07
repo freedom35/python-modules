@@ -10,7 +10,7 @@ Note: Modules written using **Python 3**.
 The **smtp** directory contains modules related to sending emails via SMTP.
 <br>
 <br>
-Note: In the test modules, ***you will need to change the example values*** for SMTP server login etc.
+Note: In the test modules, you will need to ***change the example values*** for SMTP server login etc.
 
 ### Plaintext
 Module **freedom35_smtp_plaintext.py** contains a method to demonstrate sending plaintext emails.
