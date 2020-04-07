@@ -19,8 +19,7 @@ For usage, refer to example code in **test_smtp_plaintext.py**.
 To run **test_smtp_plaintext.py**, use command line:  
 ```sh
 $ python3 test_smtp_plaintext.py
-```  
-  
+```
 <br />
   
 ### MIME (Multipurpose Internet Mail Extensions)
