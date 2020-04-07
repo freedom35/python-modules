@@ -44,4 +44,4 @@ To run **test_database.py**, use command line:<br>
 ```sh
 $ python3 test_database.py
 ```
-Note: The test example uses an in-memory database, but you can change the database name to use a file instead. i.e. **test.db**.
+Note: The test example uses an in-memory SQLite database (**:memory:**), but you can change the database name to use a file instead. i.e. **test.db**.
