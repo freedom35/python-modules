@@ -4,10 +4,10 @@ These modules are intended for example purposes, but can also be used as-is or a
 
 Note: Modules written using **Python 3**.
 <br>
+<br>
 
 ## SMTP Modules
 The **smtp** directory contains modules related to sending emails via SMTP.
-<br>
 <br>
 **Note: For the example test modules, you will need to change the values for SMTP server login etc.**
 
@@ -34,7 +34,9 @@ $ python3 test_smtp_mime.py
 ## Database Module
 The **database** directory contains modules related to SQLite v3 database operations.
 <br>
+<br>
 Module **freedom35_database.py** contains a class to demonstrate simple database operations.
+<br>
 For usage, refer to example code in **test_database.py**.
 
 To run **test_database.py**, use command line:<br>
