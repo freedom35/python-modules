@@ -20,7 +20,7 @@ def main():
         db.open(':memory:')
 
         # Insert into database
-        customer_id = db.insert_customer('Condor', 'condor1@test.com')
+        customer_id = db.insert_customer('Jim Lahey', 'jim_lahey@yahoo.ca')
 
         # Test data
         appointments = []
@@ -32,7 +32,7 @@ def main():
         db.insert_appointments(customer_id, appointments)
         
         # Change email
-        db.update_customer_email(customer_id, 'condor2@test.com')
+        db.update_customer_email(customer_id, 'jim_lahey_supervisor@yahoo.ca')
 
         # Fetch results from database
         selectedAppointments = db.select_appointments(customer_id)

@@ -14,15 +14,15 @@ from freedom35_smtp_mime import FreedomEmail
 def main():
     try:
         toName = 'Test Recipient'
-        toAddress = '...@gmail.com'         # Update!
+        toAddress = 'j_to_the_roc@hotmail.com'  # Update!
 
         email = FreedomEmail()
         
-        email.smtpUser = 'user1'            # Update!
-        email.smtpPwd = 'password1'         # Update!
+        email.smtpUser = 'user1'                # Update!
+        email.smtpPwd = 'password1'             # Update!
 
         email.fromName = 'Test Sender'
-        email.fromAddress = '...@gmailcom'  # Update!
+        email.fromAddress = 'tyrone_p@yahoo.ca' # Update!
 
         email.emailSubject = 'Test MIME'
         email.emailContentPlaintext = 'Test message (plaintext).'

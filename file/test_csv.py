@@ -18,14 +18,14 @@ def main():
 
         # Create some test data
         dataToWrite = []
-        dataToWrite.append({ 'Name': 'Condor', 'Age': '34' })
-        dataToWrite.append({ 'Name': 'Eagle', 'Age': '35' })
+        dataToWrite.append({ 'Name': 'Ricky', 'Age': '34' })
+        dataToWrite.append({ 'Name': 'Bubbles', 'Age': '35' })
 
         # Write data to new file
         write_entries(filename, dataToWrite, False)
 
         # Append another entry
-        write_entry(filename, { 'Name': 'Hawk', 'Age': '32' })
+        write_entry(filename, { 'Name': 'Julian', 'Age': '33' })
 
         # Read file back
         dataFromRead = read_entries(filename)

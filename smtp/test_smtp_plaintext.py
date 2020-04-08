@@ -14,10 +14,10 @@ from freedom35_smtp_plaintext import send_plaintext_message
 def main():
     try:
         toName = 'Test Recipient'
-        toAddress = '...@gmail.com'     # Update!
+        toAddress = 'trevor_sunnyvale@hotmail.com'  # Update!
 
         fromName = 'Test Sender'
-        fromAddress = '...@gmail.com'   # Update!
+        fromAddress = 'cory_sunnyvale@hotmail.com'  # Update!
 
         subject = 'Test Plaintext'
         message = 'This is a test message.'

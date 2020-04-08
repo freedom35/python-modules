@@ -17,7 +17,7 @@ def main():
         filename = 'test.txt'
 
         # Create some test data
-        dataToWrite = [ 'Apple', 'Orange', 'Pear' ]
+        dataToWrite = [ 'Randy', 'Sarah', 'Lucy' ]
 
         # Create new file (overwrite)
         append = False
