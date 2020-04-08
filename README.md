@@ -45,3 +45,27 @@ $ python3 test_database.py
 ```
   
 Note: The test example uses an in-memory SQLite database (**:memory:**), but you can change the database name to use a file instead. I.e. **test.db**.
+  
+<br />
+  
+## File Modules
+The **file** directory contains modules related to file handling.  
+
+### File
+Module **freedom35_file.py** contains methods to demonstrate basic text file read/write operations.  
+  
+For usage, refer to example code in **test_file.py**.  
+To run **test_file.py**, use command line:  
+```sh
+$ python3 test_file.py
+```
+  
+  
+### CSV (Comma Separated Values)
+Module **freedom35_csv.py** contains methods to demonstrate basic CSV file read/write operations.  
+  
+For usage, refer to example code in **test_csv.py**. 
+To run **test_csv.py**, use command line:  
+```sh
+$ python3 test_csv.py
+```
