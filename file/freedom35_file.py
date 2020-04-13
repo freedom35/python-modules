@@ -39,7 +39,7 @@ def read_from_file(filename):
         # Read each line in file
         for line in f.readlines():
             # Remove trailing newline chars from file
-            lines.append(line.rstrip('\n'))
+            lines.append(line.rstrip('\r\n'))
     
     # Return contents
     return lines
