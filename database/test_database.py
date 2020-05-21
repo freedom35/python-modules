@@ -3,7 +3,7 @@
 # freedom35_database.py
 #
 # Alan Barr (GitHub: freedom35)
-# April 2020
+# May 2020
 #######################################
 from freedom35_database import FreedomTestDatabase
 
@@ -34,10 +34,17 @@ def main():
         # Change email
         db.update_customer_email(customer_id, 'jim_lahey_supervisor@yahoo.ca')
 
-        # Fetch results from database
-        selectedAppointments = db.select_appointments(customer_id)
+        # Fetch dictionary of customers from database
+        selectedCustomers = db.select_customers_as_dict()
 
-        # Output results to console
+        # Output customers to console
+        for cust in selectedCustomers:
+            print('Customer Info:    {name} ({email})'.format(name=cust['name'], email=cust['email']))
+
+        # Fetch list of appointments from database
+        selectedAppointments = db.select_appointments_as_list(customer_id)
+
+        # Output appointments to console
         for appt in selectedAppointments:
             print('Appointment Info: {}'.format(appt))
 

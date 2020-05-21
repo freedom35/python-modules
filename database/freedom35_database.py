@@ -3,7 +3,7 @@
 # a SQLite v3 database.
 #
 # Alan Barr (GitHub: freedom35)
-# April 2020
+# May 2020
 #######################################
 import sqlite3
 
@@ -140,9 +140,9 @@ class FreedomTestDatabase:
 
 
     #######################################
-    # Select from database
+    # Select from database (list)
     #######################################
-    def select_appointments(self, customer_id):
+    def select_appointments_as_list(self, customer_id):
         # Check connection initialized
         if self.conn is None:
             return []
@@ -155,7 +155,7 @@ class FreedomTestDatabase:
         selectData = (customer_id,)
 
         # Define select statment
-        sqlSelect = """SELECT c.name,c.email,a.appointment_date as date,a.type FROM appointments a
+        sqlSelect = """SELECT a.appointment_date as date,c.name,a.type FROM appointments a
             INNER JOIN customers c on c.customer_id = a.customer_id
             WHERE a.customer_id = ? 
             ORDER BY a.appointment_date
@@ -170,6 +170,49 @@ class FreedomTestDatabase:
         # Return list
         return selectedResults
 
+
+    #######################################
+    # Select from database (dictionary)
+    #######################################
+    def select_customers_as_dict(self):
+        # Check connection initialized
+        if self.conn is None:
+            return []
+
+        # Assign method for converting to dictionary
+        self.conn.row_factory = self.dictionary_factory
+
+        # Get database cursor
+        cur = self.conn.cursor()
+
+        # Define select statment
+        sqlSelect = 'SELECT * FROM customers'
+
+        # Execute SQL statment
+        cur.execute(sqlSelect)
+
+        # Get results into a dictionary (via row factory)
+        selectedResults = cur.fetchall()
+
+        # Restore row factory to default
+        self.conn.row_factory = None
+
+        # Return list
+        return selectedResults
+
+
+    #######################################
+    # Dictionary Factory
+    #######################################
+    def dictionary_factory(self, cursor, row):
+        d = {}
+
+        # Create dictionary entry for each value
+        for idx, col in enumerate(cursor.description):
+            d[col[0]] = row[idx]
+        
+        return d
+    
 
     #######################################
     # Delete from database
