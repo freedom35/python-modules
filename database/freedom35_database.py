@@ -154,14 +154,14 @@ class FreedomTestDatabase:
         # (Empty value in order to create as tuple, otherwise just a single value)
         selectData = (customer_id,)
 
-        # Define select statment
+        # Define select statement
         sqlSelect = """SELECT a.appointment_date as date,c.name,a.type FROM appointments a
             INNER JOIN customers c on c.customer_id = a.customer_id
             WHERE a.customer_id = ? 
             ORDER BY a.appointment_date
             """
 
-        # Execute SQL statment
+        # Execute SQL statement
         cur.execute(sqlSelect, selectData)
 
         # Get results into a list
@@ -185,10 +185,10 @@ class FreedomTestDatabase:
         # Get database cursor
         cur = self.conn.cursor()
 
-        # Define select statment
+        # Define select statement
         sqlSelect = 'SELECT * FROM customers'
 
-        # Execute SQL statment
+        # Execute SQL statement
         cur.execute(sqlSelect)
 
         # Get results into a dictionary (via row factory)
