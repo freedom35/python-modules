@@ -25,7 +25,8 @@ def main():
         smtp_user = 'user1'              # Update - example only!
         smtp_pwd = 'password1'           # Update - example only!
 
-        send_plaintext_message(to_name, to_address, from_name, from_address, subject, message, smtp_user, smtp_pwd)
+        send_plaintext_message(to_name, to_address, from_name, from_address, 
+                               subject, message, smtp_user, smtp_pwd)
 
     except Exception as e:
         print('Error: {e}'.format(e=str(e)))
