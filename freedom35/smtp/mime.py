@@ -58,7 +58,7 @@ class FreedomMimeEmail:
         msg['To'] = '{} <{}>'.format(toName, toAddress)
 
         # BCC (Optional)
-        if not self.bcc_address is None:
+        if self.bcc_address is not None:
             msg['Bcc'] = self.bcc_address
 
         # MIME Structure:
@@ -73,7 +73,7 @@ class FreedomMimeEmail:
         msg.attach(alt)
 
         # Add attachment (optional)
-        if not self.attachment_filename is None:
+        if self.attachment_filename is not None:
             # Specify full path if file not local
             attachment_path = self.attachment_filename
 

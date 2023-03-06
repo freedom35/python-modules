@@ -59,7 +59,7 @@ class FreedomTestDatabase:
     # Closes database connection
     #######################################
     def close(self):
-        if not self.conn is None:
+        if self.conn is not None:
             self.conn.close()
 
 
