@@ -4,7 +4,7 @@
 # email via SMTP.
 #
 # Alan Barr (GitHub: freedom35)
-# April 2020
+# March 2023
 #########################################
 
 # Required for sending message
@@ -21,7 +21,7 @@ from email import encoders
 #######################################
 # Class to generate MIME email
 #######################################
-class FreedomEmail:
+class FreedomMimeEmail:
 
     #######################################
     # Members

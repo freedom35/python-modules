@@ -1,11 +1,11 @@
 #######################################
 # Example usage for module:
-# freedom35_smtp_mime.py
+# freedom35/smtp/mime.py
 #
 # Alan Barr (GitHub: freedom35)
-# April 2020
+# March 2023
 #######################################
-from freedom35_smtp_mime import FreedomEmail
+from freedom35.smtp.mime import FreedomMimeEmail
 
 
 #######################################
@@ -16,7 +16,7 @@ def main():
         toName = 'Test Recipient'
         toAddress = 'j_to_the_roc@hotmail.com'  # Update!
 
-        email = FreedomEmail()
+        email = FreedomMimeEmail()
         
         email.smtpUser = 'user1'                # Update!
         email.smtpPwd = 'password1'             # Update!

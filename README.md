@@ -13,7 +13,7 @@ Note: In the test modules, you will need to ***change the example values*** for 
   
   
 ### Plaintext
-Module **freedom35_smtp_plaintext.py** contains a method to demonstrate sending plaintext emails.  
+Module **freedom35/smtp/plaintext.py** contains a method to demonstrate sending plaintext emails.  
   
 For usage, refer to example code in **test_smtp_plaintext.py**.  
 To run **test_smtp_plaintext.py**, use command line:  
@@ -23,7 +23,7 @@ $ python3 test_smtp_plaintext.py
   
   
 ### MIME (Multipurpose Internet Mail Extensions)
-Module **freedom35_smtp_mime.py** contains a class to handle sending MIME emails.  
+Module **freedom35/smtp/mime.py** contains a class to handle sending MIME emails.  
   
 For usage, refer to example code in **test_smtp_mime.py**. 
 To run **test_smtp_mime.py**, use command line:  
@@ -34,9 +34,9 @@ $ python3 test_smtp_mime.py
 <br />
   
 ## Database Module
-The **database** directory contains modules related to SQLite v3 database operations.  
+The **freedom/database** directory contains modules related to SQLite v3 database operations.  
   
-Module **freedom35_database.py** contains a class to demonstrate simple database operations.  
+Module **freedom35/database/sqlite.py** contains a class to demonstrate simple database operations.  
   
 For usage, refer to example code in **test_database.py**.  
 To run **test_database.py**, use command line:  
@@ -49,10 +49,10 @@ Note: The test example uses an in-memory SQLite database (**:memory:**), but you
 <br />
   
 ## File Modules
-The **file** directory contains modules related to file handling.  
+The **freedom/io** directory contains modules related to file handling.  
 
 ### File
-Module **freedom35_file.py** contains methods to demonstrate basic text file read/write operations.  
+Module **freedom35/io/file.py** contains methods to demonstrate basic text file read/write operations.  
   
 For usage, refer to example code in **test_file.py**.  
 To run **test_file.py**, use command line:  
@@ -62,7 +62,7 @@ $ python3 test_file.py
   
   
 ### CSV (Comma Separated Values)
-Module **freedom35_csv.py** contains methods to demonstrate basic CSV file read/write operations.  
+Module **freedom35/io/csv.py** contains methods to demonstrate basic CSV file read/write operations.  
   
 For usage, refer to example code in **test_csv.py**. 
 To run **test_csv.py**, use command line:  

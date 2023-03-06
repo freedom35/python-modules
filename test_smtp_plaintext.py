@@ -1,11 +1,11 @@
 #######################################
 # Example usage for module:
-# freedom35_smtp_plaintext.py
+# freedom35/smtp/plaintext.py
 #
 # Alan Barr (GitHub: freedom35)
-# April 2020
+# March 2023
 #######################################
-from freedom35_smtp_plaintext import send_plaintext_message
+from freedom35.smtp.plaintext import send_plaintext_message
 
 
 #######################################

@@ -1,11 +1,11 @@
 #######################################
 # Example usage for module:
-# freedom35_database.py
+# freedom35/database/sqlite.py
 #
 # Alan Barr (GitHub: freedom35)
-# May 2020
+# March 2023
 #######################################
-from freedom35_database import FreedomTestDatabase
+from freedom35.database.sqlite import FreedomTestDatabase
 
 
 #######################################
