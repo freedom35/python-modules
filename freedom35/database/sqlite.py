@@ -7,6 +7,7 @@
 #######################################
 import sqlite3
 
+
 #######################################
 # Class to test database methods
 #######################################
@@ -16,7 +17,6 @@ class FreedomTestDatabase:
     # Members
     #######################################
     conn = None
-
 
     #######################################
     # Creates database for testing
@@ -54,14 +54,12 @@ class FreedomTestDatabase:
         # Save (commit) the changes
         self.conn.commit()
 
-
     #######################################
     # Closes database connection
     #######################################
     def close(self):
         if self.conn is not None:
             self.conn.close()
-
 
     #######################################
     # Insert single record into database
@@ -78,14 +76,14 @@ class FreedomTestDatabase:
         insert_data = (name, email)
 
         # Insert a record
-        cur.execute("INSERT INTO customers (name,email) VALUES (?,?)", insert_data)
+        cur.execute("INSERT INTO customers (name,email) VALUES (?,?)", 
+                    insert_data)
 
         # Save (commit) the changes
         self.conn.commit()
 
         # Return auto-generated id from insert (primary key)
         return cur.lastrowid
-
 
     #######################################
     # Insert multiple records into database
@@ -112,11 +110,13 @@ class FreedomTestDatabase:
             insert_data.append(row)
 
         # Insert all results
-        cur.executemany('INSERT INTO appointments (customer_id,appointment_date,type) VALUES (?,?,?)', insert_data)
+        cur.executemany('INSERT INTO appointments '
+                        '(customer_id,appointment_date,type) '
+                        'VALUES (?,?,?)', 
+                        insert_data)
 
         # Save (commit) the changes
         self.conn.commit()
-
 
     #######################################
     # Update database
@@ -133,11 +133,11 @@ class FreedomTestDatabase:
         update_data = (new_email, customer_id)
 
         # Update table
-        cur.execute("UPDATE customers SET email = ? WHERE customer_id = ?", update_data) 
+        cur.execute("UPDATE customers SET email = ? WHERE customer_id = ?", 
+                    update_data) 
 
         # Save (commit) the changes
         self.conn.commit()
-
 
     #######################################
     # Select from database (list)
@@ -151,11 +151,13 @@ class FreedomTestDatabase:
         cur = self.conn.cursor()
 
         # Create tuple for select data
-        # (Empty value in order to create as tuple, otherwise just a single value)
+        # (Empty value in order to create as tuple, 
+        # otherwise just a single value)
         select_data = (customer_id,)
 
         # Define select statement
-        sql_select = """SELECT a.appointment_date as date,c.name,a.type FROM appointments a
+        sql_select = """SELECT a.appointment_date as date,c.name,a.type 
+            FROM appointments a
             INNER JOIN customers c on c.customer_id = a.customer_id
             WHERE a.customer_id = ? 
             ORDER BY a.appointment_date
@@ -169,7 +171,6 @@ class FreedomTestDatabase:
 
         # Return list
         return selected_results
-
 
     #######################################
     # Select from database (dictionary)
@@ -200,7 +201,6 @@ class FreedomTestDatabase:
         # Return list
         return selected_results
 
-
     #######################################
     # Dictionary Factory
     #######################################
@@ -213,7 +213,6 @@ class FreedomTestDatabase:
         
         return d
     
-
     #######################################
     # Delete from database
     #######################################
@@ -229,8 +228,10 @@ class FreedomTestDatabase:
         delete_data = (customer_id,)
 
         # Delete related and primary data
-        cur.execute("DELETE FROM appointments WHERE customer_id = ?", delete_data)
-        cur.execute("DELETE FROM customers WHERE customer_id = ?", delete_data)
+        cur.execute("DELETE FROM appointments WHERE customer_id = ?", 
+                    delete_data)
+        cur.execute("DELETE FROM customers WHERE customer_id = ?", 
+                    delete_data)
 
         # Save (commit) the changes
         self.conn.commit()
