@@ -26,7 +26,7 @@ class FreedomTestDatabase:
         # Define test tables
         sql_create_table_customers = """\
             CREATE TABLE IF NOT EXISTS customers (
-                customer_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+                customer_id INTEGER NOT NULL PRIMARY KEY,
                 name TEXT NOT NULL,
                 email TEXT NOT NULL
             )
@@ -34,7 +34,7 @@ class FreedomTestDatabase:
 
         sql_create_table_appointments = """\
             CREATE TABLE IF NOT EXISTS appointments (
-                appointment_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+                appointment_id INTEGER NOT NULL PRIMARY KEY,
                 customer_id	INTEGER NOT NULL,
                 appointment_date TEXT NOT NULL,
                 type TEXT NOT NULL
