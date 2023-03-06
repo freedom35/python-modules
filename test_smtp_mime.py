@@ -13,20 +13,20 @@ from freedom35.smtp.mime import FreedomMimeEmail
 #######################################
 def main():
     try:
-        toName = 'Test Recipient'
-        toAddress = 'j_to_the_roc@hotmail.com'  # Update!
+        to_name = 'Test Recipient'
+        to_address = 'j_to_the_roc@hotmail.com'  # Update - example only!
 
         email = FreedomMimeEmail()
         
-        email.smtpUser = 'user1'                # Update!
-        email.smtpPwd = 'password1'             # Update!
+        email.smtp_user = 'user1'                # Update - example only!
+        email.smtp_pwd = 'password1'             # Update - example only!
 
-        email.fromName = 'Test Sender'
-        email.fromAddress = 'tyrone_p@yahoo.ca' # Update!
+        email.from_name = 'Test Sender'
+        email.from_address = 'tyrone_p@yahoo.ca' # Update - example only!
 
-        email.emailSubject = 'Test MIME'
-        email.emailContentPlaintext = 'Test message (plaintext).'
-        email.emailContentHtml = """\
+        email.email_subject = 'Test MIME'
+        email.email_content_plaintext = 'Test message (plaintext).'
+        email.email_content_html = """\
             <html>
             <head></head>
             <body>
@@ -39,11 +39,11 @@ def main():
         # Specify full path if file to attach is not in local dir.
         # Use os.path.join for platform (Windows/UNIX) independence (import os)
         # i.e. if file is in resources sub-dir:
-        # attachmentPath = os.path.join('resources', 'readme.md')
+        # attachment_path = os.path.join('resources', 'readme.md')
 
-        #email.attachmentFilename = 'readme.md'
+        #email.attachment_filename = 'readme.md'
         
-        email.send_mime_message(toName, toAddress)
+        email.send_mime_message(to_name, to_address)
         
     except Exception as e:
         print('Error: {e}'.format(e=str(e)))

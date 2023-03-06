@@ -13,19 +13,19 @@ from freedom35.smtp.plaintext import send_plaintext_message
 #######################################
 def main():
     try:
-        toName = 'Test Recipient'
-        toAddress = 'trevor_sunnyvale@hotmail.com'  # Update!
+        to_name = 'Test Recipient'
+        to_address = 'trevor_sunnyvale@hotmail.com'  # Update - example only!
 
-        fromName = 'Test Sender'
-        fromAddress = 'cory_sunnyvale@hotmail.com'  # Update!
+        from_name = 'Test Sender'
+        from_address = 'cory_sunnyvale@hotmail.com'  # Update - example only!
 
         subject = 'Test Plaintext'
         message = 'This is a test message.'
 
-        smtpUser = 'user1'              # Update!
-        smtpPwd = 'password1'           # Update!
+        smtp_user = 'user1'              # Update - example only!
+        smtp_pwd = 'password1'           # Update - example only!
 
-        send_plaintext_message(toName, toAddress, fromName, fromAddress, subject, message, smtpUser, smtpPwd)
+        send_plaintext_message(to_name, to_address, from_name, from_address, subject, message, smtp_user, smtp_pwd)
 
     except Exception as e:
         print('Error: {e}'.format(e=str(e)))
