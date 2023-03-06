@@ -4,7 +4,7 @@
 # email via SMTP.
 #
 # Alan Barr (GitHub: freedom35)
-# April 2020
+# March 2023
 #########################################
 
 # Required for sending message
@@ -18,25 +18,26 @@ from email.mime.text import MIMEText
 # Required for attachment
 from email import encoders
 
+
 #######################################
 # Class to generate MIME email
 #######################################
-class FreedomEmail:
+class FreedomMimeEmail:
 
     #######################################
     # Members
     #######################################
-    smtpUser = ''
-    smtpPwd = ''
-    smtpServer = 'smtp.gmail.com'
-    smtpPort = 465
-    fromName = ''
-    fromAddress = ''
-    bccAddress = None
-    attachmentFilename = None
-    emailSubject = ''
-    emailContentPlaintext = 'Plaintext message content.'
-    emailContentHtml = """\
+    smtp_user = ''
+    smtp_pwd = ''
+    smtp_server = 'smtp.gmail.com'
+    smtp_port = 465
+    from_name = ''
+    from_address = ''
+    bcc_address = None
+    attachment_filename = None
+    email_subject = ''
+    email_content_plaintext = 'Plaintext message content.'
+    email_content_html = """\
         <html>
         <head></head>
         <body>
@@ -45,7 +46,6 @@ class FreedomEmail:
         </html>
         """
 
-
     #######################################
     # Create MIME Message (as string)
     #######################################
@@ -53,13 +53,13 @@ class FreedomEmail:
 
         # Setup email
         msg = MIMEMultipart('mixed')
-        msg['Subject'] = self.emailSubject
-        msg['From'] = '{} <{}>'.format(self.fromName, self.fromAddress)
+        msg['Subject'] = self.email_subject
+        msg['From'] = '{} <{}>'.format(self.from_name, self.from_address)
         msg['To'] = '{} <{}>'.format(toName, toAddress)
 
         # BCC (Optional)
-        if not self.bccAddress is None:
-            msg['Bcc'] = self.bccAddress
+        if self.bcc_address is not None:
+            msg['Bcc'] = self.bcc_address
 
         # MIME Structure:
         # mixed
@@ -68,17 +68,17 @@ class FreedomEmail:
         #   html
         # attachment
         alt = MIMEMultipart('alternative')
-        alt.attach(MIMEText(self.emailContentPlaintext, 'plain'))
-        alt.attach(MIMEText(self.emailContentHtml, 'html'))
+        alt.attach(MIMEText(self.email_content_plaintext, 'plain'))
+        alt.attach(MIMEText(self.email_content_html, 'html'))
         msg.attach(alt)
 
         # Add attachment (optional)
-        if not self.attachmentFilename is None:
+        if self.attachment_filename is not None:
             # Specify full path if file not local
-            attachmentPath = self.attachmentFilename
+            attachment_path = self.attachment_filename
 
             # Read attachment file 
-            with open(attachmentPath, 'rb') as attachment:
+            with open(attachment_path, 'rb') as attachment:
                 sub = MIMEBase('application', 'octet-stream')
                 sub.set_payload(attachment.read())
             
@@ -86,13 +86,15 @@ class FreedomEmail:
             encoders.encode_base64(sub)
 
             # Set attachment header, use filename only
-            sub.add_header('Content-Disposition', 'attachment', filename=self.attachmentFilename)
+            sub.add_header('Content-Disposition', 'attachment', 
+                           filename=self.attachment_filename)
 
             # Add attachment object to message
             msg.attach(sub)
         
         # Send using secure SMTP
-        with smtplib.SMTP_SSL(self.smtpServer, self.smtpPort) as server:
-            # For security, login using an app generated password (not account password)
-            server.login(self.smtpUser, self.smtpPwd)
+        with smtplib.SMTP_SSL(self.smtp_server, self.smtp_port) as server:
+            # For security, login using an app generated password 
+            # (not account password)
+            server.login(self.smtp_user, self.smtp_pwd)
             server.send_message(msg)

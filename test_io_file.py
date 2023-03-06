@@ -1,11 +1,11 @@
 #######################################
 # Example usage for module:
-# freedom35_file.py
+# freedom35/io/file.py
 #
 # Alan Barr (GitHub: freedom35)
-# April 2020
+# March 2023
 #######################################
-from freedom35_file import write_to_file, read_from_file
+from freedom35.io.file import write_to_file, read_from_file
 
 
 #######################################
@@ -17,19 +17,19 @@ def main():
         filename = 'test.txt'
 
         # Create some test data
-        dataToWrite = [ 'Randy', 'Sarah', 'Lucy' ]
+        data_to_write = [ 'Randy', 'Sarah', 'Lucy' ]
 
         # Create new file (overwrite)
         append = False
 
         # Write data to file
-        write_to_file(filename, dataToWrite, append)
+        write_to_file(filename, data_to_write, append)
 
         # Read file back
-        dataFromRead = read_from_file(filename)
+        data_from_read = read_from_file(filename)
 
         # Print to console
-        for line in dataFromRead:
+        for line in data_from_read:
             print(line)
         
     except Exception as e:

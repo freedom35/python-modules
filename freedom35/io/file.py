@@ -2,7 +2,7 @@
 # Example of basic file I/O operations.
 #
 # Alan Barr (GitHub: freedom35)
-# April 2020
+# March 2023
 #######################################
 
 
@@ -12,16 +12,16 @@
 def write_to_file(filename, lines, append):
     # Determine whether appending to file 
     # or overwriting with new one
-    openType = 'a' if append else 'w'
+    open_type = 'a' if append else 'w'
 
     # Create file for writing
-    with open(filename, openType) as f:
+    with open(filename, open_type) as f:
         # Insert newline char between each item
         # (Otherwise list will be concatenated into one line)
-        separateLines = map(lambda x: f"{x}\n", lines)
+        separate_lines = map(lambda x: f"{x}\n", lines)
 
         # Write all lines to file
-        f.writelines(separateLines)
+        f.writelines(separate_lines)
 
 
 #######################################

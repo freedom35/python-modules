@@ -1,11 +1,11 @@
 #######################################
 # Example usage for module:
-# freedom35_csv.py
+# freedom35/io/csv.py
 #
 # Alan Barr (GitHub: freedom35)
-# April 2020
+# March 2023
 #######################################
-from freedom35_csv import write_entry, write_entries, read_entries
+from freedom35.io.csv import write_entry, write_entries, read_entries
 
 
 #######################################
@@ -17,21 +17,21 @@ def main():
         filename = 'test.csv'
 
         # Create some test data
-        dataToWrite = []
-        dataToWrite.append({ 'Name': 'Ricky', 'Age': '34' })
-        dataToWrite.append({ 'Name': 'Bubbles', 'Age': '35' })
+        data_to_write = []
+        data_to_write.append({ 'Name': 'Ricky', 'Age': '34' })
+        data_to_write.append({ 'Name': 'Bubbles', 'Age': '35' })
 
         # Write data to new file
-        write_entries(filename, dataToWrite, False)
+        write_entries(filename, data_to_write, False)
 
         # Append another entry
         write_entry(filename, { 'Name': 'Julian', 'Age': '33' })
 
         # Read file back
-        dataFromRead = read_entries(filename)
+        data_from_read = read_entries(filename)
 
         # Print to console
-        for line in dataFromRead:
+        for line in data_from_read:
             print('Name: {}, Age: {}'.format(line['Name'], line['Age']))
         
     except Exception as e:
