@@ -2,7 +2,7 @@
 Repository for general purpose Python modules.  
 These modules are intended for example purposes, but can also be used as-is or as a basis for use within other projects.
 
-Note: Modules written using **Python 3**.  
+Note: Modules written using [Python 3](https://www.python.org/downloads/).  
   
 <br />
   
