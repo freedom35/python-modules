@@ -35,17 +35,17 @@ def main():
         db.update_customer_email(customer_id, 'jim_lahey_supervisor@yahoo.ca')
 
         # Fetch dictionary of customers from database
-        selectedCustomers = db.select_customers_as_dict()
+        selected_customers = db.select_customers_as_dict()
 
         # Output customers to console
-        for cust in selectedCustomers:
+        for cust in selected_customers:
             print('Customer Info:    {name} ({email})'.format(name=cust['name'], email=cust['email']))
 
         # Fetch list of appointments from database
-        selectedAppointments = db.select_appointments_as_list(customer_id)
+        selected_appointments = db.select_appointments_as_list(customer_id)
 
         # Output appointments to console
-        for appt in selectedAppointments:
+        for appt in selected_appointments:
             print('Appointment Info: {}'.format(appt))
 
         # Delete test results
