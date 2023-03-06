@@ -17,19 +17,19 @@ def main():
         filename = 'test.txt'
 
         # Create some test data
-        dataToWrite = [ 'Randy', 'Sarah', 'Lucy' ]
+        data_to_write = [ 'Randy', 'Sarah', 'Lucy' ]
 
         # Create new file (overwrite)
         append = False
 
         # Write data to file
-        write_to_file(filename, dataToWrite, append)
+        write_to_file(filename, data_to_write, append)
 
         # Read file back
-        dataFromRead = read_from_file(filename)
+        data_from_read = read_from_file(filename)
 
         # Print to console
-        for line in dataFromRead:
+        for line in data_from_read:
             print(line)
         
     except Exception as e:
