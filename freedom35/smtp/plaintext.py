@@ -8,7 +8,6 @@
 import smtplib
 
 from email.message import EmailMessage
-from email.headerregistry import Address
 
 
 #######################################
