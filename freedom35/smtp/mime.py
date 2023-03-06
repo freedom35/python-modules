@@ -18,6 +18,7 @@ from email.mime.text import MIMEText
 # Required for attachment
 from email import encoders
 
+
 #######################################
 # Class to generate MIME email
 #######################################
@@ -44,7 +45,6 @@ class FreedomMimeEmail:
         </body>
         </html>
         """
-
 
     #######################################
     # Create MIME Message (as string)
@@ -86,13 +86,15 @@ class FreedomMimeEmail:
             encoders.encode_base64(sub)
 
             # Set attachment header, use filename only
-            sub.add_header('Content-Disposition', 'attachment', filename=self.attachment_filename)
+            sub.add_header('Content-Disposition', 'attachment', 
+                           filename=self.attachment_filename)
 
             # Add attachment object to message
             msg.attach(sub)
         
         # Send using secure SMTP
         with smtplib.SMTP_SSL(self.smtp_server, self.smtp_port) as server:
-            # For security, login using an app generated password (not account password)
+            # For security, login using an app generated password 
+            # (not account password)
             server.login(self.smtp_user, self.smtp_pwd)
             server.send_message(msg)
