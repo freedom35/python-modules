@@ -16,7 +16,8 @@ def main():
         db = FreedomTestDatabase()
 
         # Use an in-memory database for repeat testing
-        # Alternate option: create a database file in the local directory sych as 'test.db'
+        # Alternate option: 
+        #   Create a database file in the local directory such as 'test.db'
         db.open(':memory:')
 
         # Insert into database
@@ -39,7 +40,8 @@ def main():
 
         # Output customers to console
         for cust in selected_customers:
-            print('Customer Info:    {name} ({email})'.format(name=cust['name'], email=cust['email']))
+            print('Customer Info:    {name} ({email})'
+                  .format(name=cust['name'], email=cust['email']))
 
         # Fetch list of appointments from database
         selected_appointments = db.select_appointments_as_list(customer_id)
