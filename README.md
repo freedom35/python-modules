@@ -7,7 +7,7 @@ Note: Modules written using [Python 3](https://www.python.org/downloads/).
 <br />
   
 ## Database Module
-The **freedom/database** directory contains modules related to database operations.  
+The **freedom35/database** directory contains modules related to database operations.  
   
 Module **freedom35/database/sqlite.py** contains the class *FreedomTestDatabase* to demonstrate simple [SQLite v3](https://www.sqlite.org/version3.html) database operations. For usage of this class, refer to the example code in **test_database_sqlite.py**.  
 
@@ -21,7 +21,7 @@ Note: The test example uses an in-memory SQLite database (**:memory:**), but you
 <br />
   
 ## I/O Modules
-The **freedom/io** directory contains modules related to file handling.  
+The **freedom35/io** directory contains modules related to file handling.  
 
 ### File
 Module **freedom35/io/file.py** contains methods to demonstrate basic text file read/write operations. For usage, refer to the example code in **test_io_file.py**.  
