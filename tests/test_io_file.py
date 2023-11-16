@@ -5,6 +5,20 @@
 # Alan Barr (GitHub: freedom35)
 # March 2023
 #######################################
+import sys
+import os
+
+# Get path of current file
+current = os.path.dirname(os.path.realpath(__file__))
+
+# Get path of source modules
+parent = os.path.dirname(current)
+src = os.path.join(parent, 'src')
+ 
+# Add source path to module search
+sys.path.append(src)
+
+# Import methods
 from freedom35.io.file import write_to_file, read_from_file
 
 
